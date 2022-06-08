@@ -156,11 +156,13 @@ class _RegisScreenState extends State<RegisScreen> {
 //                BUTTON DAFTAR AKUN                                                                //
 // ================================================================================================ //
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'login');
-                  },
-                  child: Text('Daftar Akun'),
-                ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.grey),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'login');
+                    },
+                    child: const Text('Daftar Akun')),
 // ================================================================================================ //
 //                BUTTON SUDAH PUNYA AKUN                                                           //
 // ================================================================================================ //
