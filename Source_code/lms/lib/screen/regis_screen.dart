@@ -10,108 +10,180 @@ class RegisScreen extends StatefulWidget {
 TextEditingController namaLengkap = TextEditingController();
 TextEditingController emailPerusahaan = TextEditingController();
 TextEditingController password = TextEditingController();
+TextEditingController validatorpassword = TextEditingController();
 
 class _RegisScreenState extends State<RegisScreen> {
   @override
   Widget build(BuildContext context) {
+    bool _isobscure = true;
+    bool _notChecked = false;
+    bool _checked = true;
+
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Center(
-          child: Column(
-            children: [
-              const Text(
-                'Daftar Akun',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: namaLengkap,
-                decoration: const InputDecoration(
-                  label: Icon(Icons.supervised_user_circle_rounded),
-                  contentPadding: EdgeInsets.symmetric(vertical: 30),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+        padding: const EdgeInsets.all(20),
+        child: ListView(
+          children: [
+            Column(
+              children: [
+                const Text(
+                  'Daftar Akun',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                const SizedBox(height: 20),
+// ================================================================================================ //
+//                FORM NAMA LENGKAP                                                                 //
+// ================================================================================================ //
+                TextFormField(
+                  controller: namaLengkap,
+                  decoration: const InputDecoration(
+                    labelText: 'Nama Lengkap',
+                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              TextFormField(
-                controller: emailPerusahaan,
-                decoration: const InputDecoration(
-                  label: Icon(Icons.supervised_user_circle_rounded),
-                  contentPadding: EdgeInsets.symmetric(vertical: 30),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+                const SizedBox(height: 10),
+// ================================================================================================ //
+//                FORM EMAIL                                                                        //
+// ================================================================================================ //
+                TextFormField(
+                  controller: emailPerusahaan,
+                  decoration: const InputDecoration(
+                    labelText: 'Alamat Email',
+                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              const Text('Gunakan Email Perusahaan kamu'),
-              const SizedBox(height: 10),
-              TextFormField(
-                controller: password,
-                decoration: const InputDecoration(
-                  label: Icon(Icons.supervised_user_circle_rounded),
-                  contentPadding: EdgeInsets.symmetric(vertical: 30),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, 'login');
-                },
-                child: Text('Daftar Akun'),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Sudah Punya Akun ?'),
-                  const SizedBox(height: 1),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, 'login');
-                    },
-                    child: const Text(
-                      'Login',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
+                const SizedBox(height: 10),
+                const Text(
+                  'Gunakan Email Perusahaan Kamu',
+                  textAlign: TextAlign.right,
+                ),
+                const SizedBox(height: 10),
+// ================================================================================================ //
+//                FORM PASSWORD                                                                     //
+// ================================================================================================ //
+                TextFormField(
+                  controller: password,
+                  obscureText: _isobscure,
+                  decoration: const InputDecoration(
+                    labelText: 'Kata Sandi',
+                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    suffixIcon: Icon(Icons.square),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
                   ),
-                ],
-              )
-            ],
-          ),
+                ),
+                const SizedBox(height: 10),
+// ================================================================================================ //
+//                FORM VALIDATOR PASSWORD                                                           //
+// ================================================================================================ //
+                TextFormField(
+                  controller: validatorpassword,
+                  obscureText: _isobscure,
+                  decoration: const InputDecoration(
+                    labelText: 'Ulangi Kata Sandi',
+                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    suffixIcon: Icon(Icons.square),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+// ================================================================================================ //
+//                BUTTON CHECK BOX                                                                  //
+// ================================================================================================ //
+                Container(
+                  decoration: BoxDecoration(color: Colors.transparent),
+                  child: Row(
+                    children: [
+                      Checkbox(
+                          value: _notChecked,
+                          onChanged: (bool? _checked) {
+                            setState(() {
+                              _notChecked = _checked!;
+                            });
+                          }),
+                    ],
+                  ),
+                ),
+                const Text(
+                    'Saya setuju dengan syarat dan ketentuan yang berlaku'),
+                const SizedBox(height: 10),
+// ================================================================================================ //
+//                BUTTON DAFTAR AKUN                                                                //
+// ================================================================================================ //
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'login');
+                  },
+                  child: Text('Daftar Akun'),
+                ),
+// ================================================================================================ //
+//                BUTTON SUDAH PUNYA AKUN                                                           //
+// ================================================================================================ //
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Sudah Punya Akun ?'),
+                    const SizedBox(height: 1),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'login');
+                      },
+                      child: const Text(
+                        'Login',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ],
         ),
       ),
     );
