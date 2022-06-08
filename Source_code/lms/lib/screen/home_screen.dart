@@ -24,8 +24,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
+    return MaterialApp(
+        home: Scaffold(
       body: Center(
         child: _controller.value.isInitialized
             ? AspectRatio(
@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
           _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
         ),
       ),
-    );
+    ));
   }
 
   @override
