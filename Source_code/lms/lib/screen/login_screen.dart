@@ -13,7 +13,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(25),
         child: Center(
           child: Column(
             children: [
@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
               TextFormField(
                 controller: emailPerusahaan,
                 decoration: const InputDecoration(
-                  label: Icon(Icons.supervised_user_circle_rounded),
+                  labelText: 'email',
                   contentPadding: EdgeInsets.symmetric(vertical: 30),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.black),
