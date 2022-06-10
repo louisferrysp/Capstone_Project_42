@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
 // ================================================================================================ //
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, 'login');
+                      Navigator.pushNamed(context, 'dashboard');
                     },
                     child: Text('Login'),
                   ),
