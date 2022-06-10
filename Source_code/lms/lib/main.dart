@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/screen/dashboard_screen.dart';
 import 'package:lms/screen/login_screen.dart';
 import 'package:lms/screen/regis_screen.dart';
 
@@ -9,6 +10,7 @@ void main() {
     routes: {
       'regis': (context) => const RegisScreen(),
       'login': (context) => const LoginScreen(),
+      'dashboard': (context) => const DashboardScreen(),
     },
   ));
 }
