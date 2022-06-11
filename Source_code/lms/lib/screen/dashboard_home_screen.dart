@@ -240,13 +240,15 @@ class _DashBoardHomeScreenState extends State<DashBoardHomeScreen> {
           Container(
             width: 300,
             height: 50,
-            color: Colors.grey,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10), color: Colors.grey),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               children: [
-                Text('Kontak Kami'),
+                const Text('Kontak Kami'),
                 IconButton(
                     onPressed: () {},
-                    icon: SvgPicture.asset('assets/images/vector.svg')),
+                    icon: SvgPicture.asset('assets/images/instagram.svg')),
               ],
             ),
           )

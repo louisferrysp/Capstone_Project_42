@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lms/screen/dashboard_course_screen.dart';
+import 'package:lms/screen/course_screen.dart';
+import 'package:lms/screen/dashboard_course_screen_active.dart';
 import 'package:lms/screen/dashboard_home_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int _curIndex = 0;
   final List<Widget> _widgetOption = <Widget>[
     const DashBoardHomeScreen(),
-    const DashBoardCourseScreen(),
+    const CourseScreen(),
     Text('INI PROFILE'),
   ];
 
@@ -26,8 +27,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
-      appBar: AppBar(),
       body: _widgetOption.elementAt(_curIndex),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.grey,

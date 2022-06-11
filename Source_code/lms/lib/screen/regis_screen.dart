@@ -38,7 +38,8 @@ class _RegisScreenState extends State<RegisScreen> {
                   controller: namaLengkap,
                   decoration: const InputDecoration(
                     labelText: 'Nama Lengkap',
-                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey),
                       borderRadius: BorderRadius.all(
@@ -61,7 +62,8 @@ class _RegisScreenState extends State<RegisScreen> {
                   controller: emailPerusahaan,
                   decoration: const InputDecoration(
                     labelText: 'Alamat Email',
-                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey),
                       borderRadius: BorderRadius.all(
@@ -90,7 +92,8 @@ class _RegisScreenState extends State<RegisScreen> {
                   obscureText: _isobscure,
                   decoration: const InputDecoration(
                     labelText: 'Kata Sandi',
-                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                     suffixIcon: Icon(Icons.square),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey),
@@ -115,7 +118,8 @@ class _RegisScreenState extends State<RegisScreen> {
                   obscureText: _isobscure,
                   decoration: const InputDecoration(
                     labelText: 'Ulangi Kata Sandi',
-                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                     suffixIcon: Icon(Icons.square),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey),

@@ -31,15 +31,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: emailPerusahaan,
                     decoration: const InputDecoration(
                       labelText: 'Alamat Email',
-                      contentPadding: EdgeInsets.symmetric(vertical: 30),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black),
+                        borderSide: BorderSide(color: Colors.grey),
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black),
+                        borderSide: BorderSide(color: Colors.grey),
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),
                         ),
@@ -56,15 +57,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: password,
                     decoration: const InputDecoration(
                       labelText: 'Kata Sandi',
-                      contentPadding: EdgeInsets.symmetric(vertical: 30),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black),
+                        borderSide: BorderSide(color: Colors.grey),
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black),
+                        borderSide: BorderSide(color: Colors.grey),
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),
                         ),
@@ -76,6 +78,9 @@ class _LoginScreenState extends State<LoginScreen> {
 //                BUTTON LOGIN                                                                      //
 // ================================================================================================ //
                   ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.grey)),
                     onPressed: () {
                       Navigator.pushNamed(context, 'dashboard');
                     },
