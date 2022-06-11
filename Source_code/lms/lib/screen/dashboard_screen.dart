@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lms/screen/dashboard_course_screen.dart';
 import 'package:lms/screen/dashboard_home_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -12,7 +13,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int _curIndex = 0;
   final List<Widget> _widgetOption = <Widget>[
     const DashBoardHomeScreen(),
-    Text('INI Course'),
+    const DashBoardCourseScreen(),
     Text('INI PROFILE'),
   ];
 
