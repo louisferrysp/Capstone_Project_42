@@ -28,25 +28,46 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _widgetOption.elementAt(_curIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.grey,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_sharp, color: Colors.black),
-            label: '',
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu_book_outlined, color: Colors.black),
-            label: '',
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              spreadRadius: 5,
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.supervised_user_circle, color: Colors.black),
-            label: '',
+          child: BottomNavigationBar(
+            backgroundColor: Colors.grey,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.menu_book_outlined),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.supervised_user_circle),
+                label: '',
+              ),
+            ],
+            currentIndex: _curIndex,
+            selectedItemColor: Colors.white,
+            onTap: _selectItem,
           ),
-        ],
-        currentIndex: _curIndex,
-        selectedItemColor: Colors.white,
-        onTap: _selectItem,
+        ),
       ),
     );
   }
