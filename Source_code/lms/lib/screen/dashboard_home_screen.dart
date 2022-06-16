@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lms/model/User_model.dart';
+import 'package:provider/provider.dart';
 import 'package:textfield_search/textfield_search.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -27,7 +29,7 @@ class _DashBoardHomeScreenState extends State<DashBoardHomeScreen> {
       child: ListView(
         children: [
           const Text(
-            'Halo, (user name)',
+            'Halo,',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),

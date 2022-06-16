@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lms/api/login_api.dart';
+import 'package:lms/model/User_model.dart';
 import 'package:lms/screen/regis_screen.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -11,7 +14,17 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   @override
+  void setState(LoginScreen) {
+    super.setState(LoginScreen);
+  }
+
+  @override
   Widget build(BuildContext context) {
+    TextEditingController emailPerusahaan = TextEditingController();
+    TextEditingController passwordUser = TextEditingController();
+    UserModel userModel =
+        UserModel(email: emailPerusahaan.text, password: passwordUser.text);
+
     return Scaffold(
       body: Center(
         child: ListView(
@@ -58,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       //                FORM PASSWORD                                                                     //
                       // ================================================================================================ //
                       TextFormField(
-                        controller: password,
+                        controller: passwordUser,
                         decoration: const InputDecoration(
                           labelText: 'Kata Sandi',
                           contentPadding: EdgeInsets.symmetric(
@@ -78,6 +91,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       const SizedBox(height: 10),
+                      Text(
+                          'ini email ${emailPerusahaan.text}|| ini password ${passwordUser.text}'),
                       // ================================================================================================ //
                       //                BUTTON LOGIN                                                                      //
                       // ================================================================================================ //
@@ -86,7 +101,28 @@ class _LoginScreenState extends State<LoginScreen> {
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.grey)),
                         onPressed: () {
-                          Navigator.pushNamed(context, 'dashboard');
+                          setState(() {
+                            emailPerusahaan.text;
+                            passwordUser.text;
+                          });
+                          UserModel.userAPI('user1@traveloka.com', 'user123')
+                              .then((value) {
+                            setState(() {
+                              userModel.email = value.email;
+                              userModel.password = value.password;
+                            });
+                          });
+                          print("this is user ${userModel.email}");
+                          print("this is password ${userModel.password}");
+                          print(
+                              "this is email perusahaan ${emailPerusahaan.text}");
+                          print(
+                              "this is password perusahaan ${passwordUser.text}");
+                          if (userModel.email == emailPerusahaan.text &&
+                              userModel.password == passwordUser.text) {
+                          } else {
+                            print('kok error');
+                          }
                         },
                         child: Text('Login'),
                       ),

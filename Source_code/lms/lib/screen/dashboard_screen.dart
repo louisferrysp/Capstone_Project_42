@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lms/screen/course_screen.dart';
 import 'package:lms/screen/dashboard_course_screen_active.dart';
 import 'package:lms/screen/dashboard_home_screen.dart';
+import 'package:lms/screen/regis_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   int _curIndex = 0;
+
   final List<Widget> _widgetOption = <Widget>[
     const DashBoardHomeScreen(),
     const CourseScreen(),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:lms/model/User_model.dart';
 import 'package:lms/screen/course_screen.dart';
 import 'package:lms/screen/dashboard_course_screen_active.dart';
 import 'package:lms/screen/dashboard_course_screen_past.dart';
 import 'package:lms/screen/dashboard_screen.dart';
 import 'package:lms/screen/login_screen.dart';
 import 'package:lms/screen/regis_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MaterialApp(

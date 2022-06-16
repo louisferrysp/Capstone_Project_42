@@ -7,10 +7,10 @@ class RegisScreen extends StatefulWidget {
   State<RegisScreen> createState() => _RegisScreenState();
 }
 
-TextEditingController namaLengkap = TextEditingController();
-TextEditingController emailPerusahaan = TextEditingController();
-TextEditingController password = TextEditingController();
-TextEditingController validatorpassword = TextEditingController();
+TextEditingController _namaLengkap = TextEditingController();
+TextEditingController _emailPerusahaan = TextEditingController();
+TextEditingController _password = TextEditingController();
+TextEditingController _validatorpassword = TextEditingController();
 
 class _RegisScreenState extends State<RegisScreen> {
   @override
@@ -35,7 +35,7 @@ class _RegisScreenState extends State<RegisScreen> {
 //                FORM NAMA LENGKAP                                                                 //
 // ================================================================================================ //
                 TextFormField(
-                  controller: namaLengkap,
+                  controller: _namaLengkap,
                   decoration: const InputDecoration(
                     labelText: 'Nama Lengkap',
                     contentPadding:
@@ -59,7 +59,7 @@ class _RegisScreenState extends State<RegisScreen> {
 //                FORM EMAIL                                                                        //
 // ================================================================================================ //
                 TextFormField(
-                  controller: emailPerusahaan,
+                  controller: _emailPerusahaan,
                   decoration: const InputDecoration(
                     labelText: 'Alamat Email',
                     contentPadding:
@@ -88,7 +88,7 @@ class _RegisScreenState extends State<RegisScreen> {
 //                FORM PASSWORD                                                                     //
 // ================================================================================================ //
                 TextFormField(
-                  controller: password,
+                  controller: _password,
                   obscureText: _isobscure,
                   decoration: const InputDecoration(
                     labelText: 'Kata Sandi',
@@ -114,7 +114,7 @@ class _RegisScreenState extends State<RegisScreen> {
 //                FORM VALIDATOR PASSWORD                                                           //
 // ================================================================================================ //
                 TextFormField(
-                  controller: validatorpassword,
+                  controller: _validatorpassword,
                   obscureText: _isobscure,
                   decoration: const InputDecoration(
                     labelText: 'Ulangi Kata Sandi',
