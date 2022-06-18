@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lms/api/login_api.dart';
-import 'package:lms/model/User_model.dart';
 import 'package:lms/screen/regis_screen.dart';
+import 'package:lms/service/auth_service.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,17 +13,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  @override
-  void setState(LoginScreen) {
-    super.setState(LoginScreen);
-  }
-
+  bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
     TextEditingController emailPerusahaan = TextEditingController();
     TextEditingController passwordUser = TextEditingController();
-    UserModel userModel =
-        UserModel(email: emailPerusahaan.text, password: passwordUser.text);
 
     return Scaffold(
       body: Center(
@@ -35,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     children: [
+                      const SizedBox(height: 10),
                       const Text(
                         'Login',
                         style: TextStyle(
@@ -51,13 +46,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 15, horizontal: 20),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey),
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(255, 0, 92, 74)),
                             borderRadius: BorderRadius.all(
                               Radius.circular(10),
                             ),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey),
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(255, 0, 92, 74)),
                             borderRadius: BorderRadius.all(
                               Radius.circular(10),
                             ),
@@ -72,27 +69,39 @@ class _LoginScreenState extends State<LoginScreen> {
                       // ================================================================================================ //
                       TextFormField(
                         controller: passwordUser,
-                        decoration: const InputDecoration(
+                        obscureText: _isObscure,
+                        decoration: InputDecoration(
                           labelText: 'Kata Sandi',
-                          contentPadding: EdgeInsets.symmetric(
+                          contentPadding: const EdgeInsets.symmetric(
                               vertical: 15, horizontal: 20),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey),
+                          enabledBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(255, 0, 92, 74)),
                             borderRadius: BorderRadius.all(
                               Radius.circular(10),
                             ),
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey),
+                          focusedBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(255, 0, 92, 74)),
                             borderRadius: BorderRadius.all(
                               Radius.circular(10),
                             ),
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Icon(Icons.visibility),
+                            onPressed: () {
+                              setState(() {
+                                passwordUser;
+                              });
+                              setState(() {
+                                _isObscure = !_isObscure;
+                              });
+                            },
                           ),
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Text(
-                          'ini email ${emailPerusahaan.text}|| ini password ${passwordUser.text}'),
                       // ================================================================================================ //
                       //                BUTTON LOGIN                                                                      //
                       // ================================================================================================ //
@@ -101,30 +110,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.grey)),
                         onPressed: () {
-                          setState(() {
-                            emailPerusahaan.text;
-                            passwordUser.text;
-                          });
-                          UserModel.userAPI('user1@traveloka.com', 'user123')
-                              .then((value) {
-                            setState(() {
-                              userModel.email = value.email;
-                              userModel.password = value.password;
-                            });
-                          });
-                          print("this is user ${userModel.email}");
-                          print("this is password ${userModel.password}");
-                          print(
-                              "this is email perusahaan ${emailPerusahaan.text}");
-                          print(
-                              "this is password perusahaan ${passwordUser.text}");
-                          if (userModel.email == emailPerusahaan.text &&
-                              userModel.password == passwordUser.text) {
-                          } else {
-                            print('kok error');
-                          }
+                          Navigator.pushNamed(context, 'dashboard');
                         },
-                        child: Text('Login'),
+                        child: const Text('Login'),
                       ),
                       // ================================================================================================ //
                       //                BUTTON BELUM PUNYA AKUN                                                           //
@@ -152,50 +140,76 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
+                const SizedBox(height: 120),
                 // ================================================================================================ //
                 //                Kontak kami, Information, FaQ , Tentang Kami                                      //
                 // ================================================================================================ //
                 Container(
-                  padding: const EdgeInsets.all(10),
-                  height: 250,
+                  height: 200,
                   width: double.infinity,
-                  color: Colors.grey,
+                  color: Color.fromARGB(255, 0, 92, 74),
                   child: Column(
                     children: [
-                      const SizedBox(height: 20),
                       Container(
-                        color: Colors.white,
+                        color: Color.fromARGB(255, 255, 102, 36),
                         height: 50,
                         width: double.infinity,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            const Text('Kontak Kami'),
-                            SvgPicture.asset('assets/images/instagram.svg'),
-                            SvgPicture.asset('assets/images/facebook.svg'),
-                            SvgPicture.asset('assets/images/telegram.svg'),
-                            SvgPicture.asset('assets/images/youtube.svg'),
+                            const Text(
+                              'Kontak Kami',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            SvgPicture.asset(
+                              'assets/images/instagram.svg',
+                              color: Colors.white,
+                            ),
+                            SvgPicture.asset('assets/images/facebook.svg',
+                                color: Colors.white),
+                            SvgPicture.asset('assets/images/telegram.svg',
+                                color: Colors.white),
+                            SvgPicture.asset('assets/images/youtube.svg',
+                                color: Colors.white),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 5),
-                      const Align(
-                        alignment: Alignment.topLeft,
-                        child: Text('Informasi'),
-                      ),
-                      const SizedBox(height: 5),
-                      const Align(
-                        alignment: Alignment.topLeft,
-                        child: Text('FAQ'),
-                      ),
-                      const SizedBox(height: 5),
-                      const Align(
-                        alignment: Alignment.topLeft,
-                        child: Text('Tentang Kami'),
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        width: double.infinity,
+                        height: 100,
+                        child: Column(
+                          children: const [
+                            SizedBox(height: 10),
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                'Informasi',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                'FAQ',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                'Tentang Kami',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                ),
+                )
               ],
             ),
           ],

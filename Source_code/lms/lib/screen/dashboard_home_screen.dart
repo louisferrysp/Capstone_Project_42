@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms/model/User_model.dart';
+import 'package:lms/model/profile_model.dart';
 import 'package:provider/provider.dart';
 import 'package:textfield_search/textfield_search.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,255 +22,97 @@ class _DashBoardHomeScreenState extends State<DashBoardHomeScreen> {
     });
   }
 
+  var nama = 'Budi';
+  var courseTitle = 'Course Title';
+  var courseDesc = 'Course Description';
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: ListView(
+      child: Column(
         children: [
-          const Text(
-            'Halo,',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 10),
-          const Text(
-            'Welcome Back',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-          Container(
-            width: 250,
-            height: 100,
-            child: TextFormField(
-              controller: _searchController,
-              decoration: const InputDecoration(
-                labelText: 'Cari',
-                contentPadding: EdgeInsets.symmetric(vertical: 30),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                ),
-              ),
+          const SizedBox(height: 20),
+          ListTile(
+            title: Text(
+              'Halo, $nama !',
+              style: TextStyle(
+                  fontSize: 13, color: Color.fromARGB(255, 0, 92, 74)),
+            ),
+            subtitle: Text(
+              'Welcome Back !',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 0, 92, 74)),
+            ),
+            trailing: CircleAvatar(
+              backgroundImage: AssetImage('assets/images/landing.png'),
             ),
           ),
-          // TextFieldSearch(
-          //   label: 'Search Course',
-          //   controller: _searchController,
-          //   future: () {
-          //     return "HALO";
-          //   },
-          //   decoration: InputDecoration(
-          //     border: OutlineInputBorder(
-          //       borderSide: const BorderSide(color: Colors.black),
-          //       borderRadius: BorderRadius.circular(10),
-          //     ),
-          //     hintText: 'Search Course',
-          //   ),
-          // ),
           Container(
             width: double.infinity,
-            height: 180,
-            child: GridView.builder(
-                scrollDirection: Axis.horizontal,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 1),
-                itemCount: 5,
-                itemBuilder: (BuildContext, int index) {
-                  return const Card(
-                    color: Colors.blue,
-                    child: Center(
-                      child: Text('Halo'),
-                    ),
+            height: 472,
+            child: ListView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'dashboard_active_screen');
+                    },
+                    child: courseCard(),
                   );
                 }),
           ),
-          Container(
-            width: 250,
-            height: 100,
-            child: const Center(
-              child: Text(
-                'Tingkatkan Kemampuanmu, Mari Belajar Bersama Kami!',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-              ),
-            ),
-          ),
-          const SizedBox(height: 5),
-          Container(
-            width: 250,
-            height: 50,
-            child: const Center(
-              child: Text(
-                'Perluas pengetahuan dengan pembelajaran yang mencengkeram dunia',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          Container(
-            width: double.infinity,
-            height: 190,
-            child: Column(
-              children: [
-                const Text(
-                  'Top Course Of The Week',
-                  textAlign: TextAlign.left,
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 170,
-                  child: InkWell(
-                    onTap: () {},
-                    hoverColor: Colors.blue,
-                    child: GridView.builder(
-                        scrollDirection: Axis.horizontal,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 1),
-                        itemCount: 5,
-                        itemBuilder: (BuildContext, int index) {
-                          return Column(
-                            children: [
-                              Card(
-                                color: Colors.blue,
-                                child: Container(
-                                  width: 160,
-                                  height: 100,
-                                ),
-                              ),
-                              Text('List Course'),
-                            ],
-                          );
-                        }),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            height: 200,
-            child: Column(
-              children: [
-                const Text(
-                  'TOPIK',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 130,
-                  child: GridView.builder(
-                      scrollDirection: Axis.horizontal,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 1),
-                      itemCount: 5,
-                      itemBuilder: (BuildContext, int index) {
-                        return Column(
-                          children: [
-                            Container(
-                              width: 80,
-                              height: 50,
-                              child: Card(
-                                child: Container(
-                                  width: 80,
-                                  height: 50,
-                                  child: Text('HALO',
-                                      textAlign: TextAlign.justify),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              width: 100,
-                              height: 80,
-                              child: Center(
-                                child: Text('Halo'),
-                              ),
-                            ),
-                          ],
-                        );
-                      }),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            height: 150,
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(color: Colors.black),
-                top: BorderSide(color: Colors.black),
-                left: BorderSide(color: Colors.black),
-                right: BorderSide(color: Colors.black),
-              ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              children: [
-                const Text(
-                  'Perusahaan Besar Yang Percaya Pada Kami',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10),
-                ),
-                Container(
-                  width: 200,
-                  height: 130,
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3),
-                    itemCount: 5,
-                    itemBuilder: (BuildContext, int index) {
-                      return const Card(
-                        color: Colors.blue,
-                        child: Center(
-                          child: Text('HALO'),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 10),
-          Container(
-            width: 300,
-            height: 50,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), color: Colors.grey),
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                const Text('Kontak Kami'),
-                IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset('assets/images/instagram.svg')),
-              ],
-            ),
-          )
         ],
       ),
     );
+  }
 
-    //   return ListView(
-    //     children: [
-    //       const Text('Halo + (user name)'),
-    //       const Text('Welcome Back'),
-    //       TextFieldSearch(
-    //         label: 'Search',
-    //         controller: _searchController,
-    //         decoration: const InputDecoration(
-    //             border: OutlineInputBorder(
-    //                 borderSide: BorderSide(color: Colors.black))),
-    //       ),
-    //     ],
-    //   );
-    // }
+  Widget courseCard() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        padding: EdgeInsets.all(20),
+        width: double.infinity,
+        height: 300,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Color.fromARGB(255, 0, 92, 74),
+        ),
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              height: 120,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/ret.png'),
+                      fit: BoxFit.cover)),
+            ),
+            const SizedBox(height: 7),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                courseTitle,
+                style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+            ),
+            const SizedBox(height: 7),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                courseDesc,
+                style: TextStyle(fontSize: 15, color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

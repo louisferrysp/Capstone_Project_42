@@ -3,6 +3,7 @@ import 'package:lms/screen/course_screen.dart';
 import 'package:lms/screen/dashboard_course_screen_active.dart';
 import 'package:lms/screen/dashboard_home_screen.dart';
 import 'package:lms/screen/regis_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -12,9 +13,9 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  int _curIndex = 0;
+  int curIndex = 0;
 
-  final List<Widget> _widgetOption = <Widget>[
+  final List<Widget> widgetOption = <Widget>[
     const DashBoardHomeScreen(),
     const CourseScreen(),
     Text('INI PROFILE'),
@@ -22,14 +23,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   void _selectItem(int index) {
     setState(() {
-      _curIndex = index;
+      curIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    bool select = false;
     return Scaffold(
-      body: _widgetOption.elementAt(_curIndex),
+      body: widgetOption.elementAt(curIndex),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.only(
@@ -44,31 +46,25 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
           ],
         ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-          child: BottomNavigationBar(
-            backgroundColor: Colors.grey,
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.menu_book_outlined),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.supervised_user_circle),
-                label: '',
-              ),
-            ],
-            currentIndex: _curIndex,
-            selectedItemColor: Colors.white,
-            onTap: _selectItem,
-          ),
+        child: BottomNavigationBar(
+          backgroundColor: Color.fromARGB(255, 255, 102, 36),
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/images/home.svg'),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/images/course.svg'),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/images/profile.svg'),
+              label: '',
+            ),
+          ],
+          currentIndex: curIndex,
+          selectedItemColor: Color.fromARGB(255, 0, 92, 74),
+          onTap: _selectItem,
         ),
       ),
     );

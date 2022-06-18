@@ -39,9 +39,10 @@ dependencies:
   video_player: ^2.4.2
   textfield_search: ^0.10.0
   flutter_svg: ^1.0.3
-  dio: ^4.0.6
+  dio: any
   percent_indicator: ^4.2.2
   http: ^0.13.4
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
