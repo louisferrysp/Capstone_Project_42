@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lms/screen/course_screen.dart';
-import 'package:lms/screen/dashboard_course_screen_active.dart';
+import 'package:lms/screen/course_screen_management.dart';
+import 'package:lms/screen/course_screen_active.dart';
 import 'package:lms/screen/dashboard_home_screen.dart';
+import 'package:lms/screen/profile_screen_management.dart';
 import 'package:lms/screen/regis_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -18,7 +19,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final List<Widget> widgetOption = <Widget>[
     const DashBoardHomeScreen(),
     const CourseScreen(),
-    Text('INI PROFILE'),
+    const ProfileScreen(),
   ];
 
   void _selectItem(int index) {

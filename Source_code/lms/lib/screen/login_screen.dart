@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       const SizedBox(height: 10),
                       const Text(
-                        'Login',
+                        'Masuk',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -62,7 +62,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      const Text('Gunakan Email Yang Telah Terdaftar'),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text('* Gunakan Email Yang Telah Terdaftar')),
                       const SizedBox(height: 10),
                       // ================================================================================================ //
                       //                FORM PASSWORD                                                                     //
@@ -106,13 +108,19 @@ class _LoginScreenState extends State<LoginScreen> {
                       //                BUTTON LOGIN                                                                      //
                       // ================================================================================================ //
                       ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.grey)),
+                        style: ElevatedButton.styleFrom(
+                          primary: Color.fromARGB(255, 0, 92, 74),
+                          fixedSize: Size(300, 40),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          ),
+                        ),
                         onPressed: () {
                           Navigator.pushNamed(context, 'dashboard');
                         },
-                        child: const Text('Login'),
+                        child: const Text('Masuk'),
                       ),
                       // ================================================================================================ //
                       //                BUTTON BELUM PUNYA AKUN                                                           //
@@ -130,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               'Sign Up',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.black),
+                                  color: Color.fromARGB(255, 0, 92, 74)),
                             ),
                           ),
                           const SizedBox(height: 10),
@@ -140,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 120),
+                const SizedBox(height: 160),
                 // ================================================================================================ //
                 //                Kontak kami, Information, FaQ , Tentang Kami                                      //
                 // ================================================================================================ //

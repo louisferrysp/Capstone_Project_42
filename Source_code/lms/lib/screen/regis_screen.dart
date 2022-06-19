@@ -96,9 +96,12 @@ class _RegisScreenState extends State<RegisScreen> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    const Text(
-                      'Gunakan Email Perusahaan Kamu',
-                      textAlign: TextAlign.right,
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        '* Gunakan Email Perusahaan Kamu',
+                        textAlign: TextAlign.right,
+                      ),
                     ),
                     const SizedBox(height: 10),
                     // ================================================================================================ //
@@ -167,19 +170,15 @@ class _RegisScreenState extends State<RegisScreen> {
                     // ================================================================================================ //
                     //                BUTTON CHECK BOX                                                                  //
                     // ================================================================================================ //
-                    Container(
-                      decoration: BoxDecoration(color: Colors.transparent),
-                      child: Row(
-                        children: [
-                          Checkbox(
-                              value: _notChecked,
-                              onChanged: (bool? _checked) {
-                                setState(() {
-                                  _notChecked = _checked!;
-                                });
-                              }),
-                        ],
-                      ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Checkbox(
+                          value: _notChecked,
+                          onChanged: (bool? _checked) {
+                            setState(() {
+                              _notChecked = _checked!;
+                            });
+                          }),
                     ),
                     const Text(
                         'Saya setuju dengan syarat dan ketentuan yang berlaku'),
@@ -195,6 +194,7 @@ class _RegisScreenState extends State<RegisScreen> {
                           Navigator.pushNamed(context, 'login');
                         },
                         child: const Text('Daftar Akun')),
+                    const SizedBox(height: 20),
                     // ================================================================================================ //
                     //                BUTTON SUDAH PUNYA AKUN                                                           //
                     // ================================================================================================ //
